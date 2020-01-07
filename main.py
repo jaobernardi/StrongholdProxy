@@ -4,7 +4,8 @@ import threading
 
 #Client management
 class Client:
-	pass
+	def __init__(self, address):
+		
 
 #The server it self
 class ProxyServer:
@@ -60,6 +61,8 @@ class ProxyServer:
 		try:
 			dest_sock.connect((info['hostname'], info['port']))
 		except:
+			if info['method'] == "CONNECT":
+				client.send(b"HTTP/1.1 404 Connection failed\nProxy-Agent: Stronghold Proxy\n\n")
 			exit()
 		# HTTPS handling
 		if info['method'] != "CONNECT":
