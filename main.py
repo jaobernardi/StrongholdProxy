@@ -23,6 +23,13 @@ class Config:
 			parsed = load(f)
 			# Return Value 
 			return parsed['captiveportal']
+	def HostPort():
+		# Open file
+		with open('config.json', 'r') as f:
+			# Parse file
+			parsed = load(f)
+			# Return Value 
+			return (parsed['host'], parsed['port'])
 #Client management
 class Client(object):
 	def __init__(self, address):
@@ -169,6 +176,7 @@ class ProxyServer:
 		except:
 			pass
 try:
-	ProxyServer("", 2012).start()
+	(host, port) = Config.HostPort()
+	ProxyServer(host, port).start()
 except KeyboardInterrupt:
 	exit()
