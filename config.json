@@ -1,0 +1,10 @@
+{
+	"port": 2012, 
+	"host": "",
+	"captiveportal": false,
+	"users": [
+		["jao", "1"],
+		["anon", "ymous"]
+	]
+		
+}
